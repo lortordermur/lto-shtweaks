@@ -242,7 +242,7 @@ alias pinknoise='play -c 2 -n synth pinknoise band -n 2500 4000 reverb 20'
 # Fix: attempt to set all connected bluetooth devices to high quality A2DP
 # mode (requires pulseaudio-utils installed)
 
-alias bta2dp='for card in $(pacmd list-cards | grep "name: " | sed "s/.*<\(.*\)>.*/\1/"); do pacmd set-card-profile $card a2dp_sink; done'
+alias bta2dp='for card in $(pacmd list-cards | grep "name: " | sed "s/.*<\(.*\)>.*/\1/"); do { printf "$card … "; pacmd set-card-profile $card a2dp_sink; } done; printf "\n"'
 
 # Wipe all image thumbnails to free space or to have them regenerated
 

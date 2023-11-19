@@ -6,6 +6,8 @@
 # collection which have aggregated over the years, and which I thought would
 # be general and useful enough to share.
 
+# Get the newest version at <https://github.com/lortordermur/lto-shtweaks>.
+
 # I mainly use Debian derived Linux distributions with the KDE/Plasma desktop
 # so there is some emphasis on that.
 

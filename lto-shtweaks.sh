@@ -177,7 +177,8 @@ alias dropcache='sync; sudo sh -c "echo 1 > /proc/sys/vm/drop_caches"'
 
 alias hotspots='nmcli device wifi list'
 
-# Show all live hosts on the local network (requires nmap installed)
+# Show all live hosts on the local network (requires nmap and net-tools
+# installed)
 
 alias livehosts='nmap -sP "$(ip -4 -o route get 1 | cut -d " " -f 7)"/24 | grep report | cut -d " " -f 5-'
 
@@ -216,7 +217,7 @@ alias logoff-plasma='qdbus org.kde.ksmserver /KSMServer logout 0 0 0'
 
 alias updatefontcache='sudo fc-cache -f -v'
 
-# Fix "Unknown media type in type" warnings in KDE
+# Fix "unknown media type in type" warnings in KDE
 
 alias kdemimefix='sudo sh -c "rm /usr/share/mime/packages/kde.xml && update-mime-database /usr/share/mime"'
 
@@ -270,7 +271,7 @@ calc (){
 
 ### Package management ###
 
-# Show which package a command was installed by
+# Show which package installed a command
 
 whatinstalled () {
   local cmdpath=$(realpath -eP $(which -a $1 | grep -E "^/" | tail -n 1) 2>/dev/null) && [ -x "$cmdpath" ] && dpkg -S $cmdpath 2>/dev/null | grep -E ": $cmdpath\$" | cut -d ":" -f 1

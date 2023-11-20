@@ -101,7 +101,7 @@ alias mounts='mount | column -t | sort'
 
 # List all physical storage devices in the system
 
-alias disks='df | grep "^/dev/" | cut -f 1 -d " "'
+alias disks='lsblk | grep "disk" | cut -f 1 -d " "'
 
 # Make the current user the owner of the given file(s) or directory, descends
 # recursively

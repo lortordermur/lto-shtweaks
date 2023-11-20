@@ -19,8 +19,8 @@
 # copy (or symlink) it to your home directory and then source it in your
 # shell’s initialization file, such as .bashrc or .zshrc, using
 
-# if [ -f ~/.lto-shtweaks.sh ]; then
-#   . ~/.lto-shtweaks.sh
+# if [ -f ~/lto-shtweaks.sh ]; then
+#   . ~/lto-shtweaks.sh
 # fi
 
 

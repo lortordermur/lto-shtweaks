@@ -177,6 +177,14 @@ alias dropcache='sync; sudo sh -c "echo 1 > /proc/sys/vm/drop_caches"'
 
 alias hotspots='nmcli device wifi list'
 
+# Disable all wireless interfaces (requires rfkill installed)
+
+alias rfoff='sudo rfkill block all'
+
+# Enable all wireless interfaces (requires rfkill installed)
+
+alias rfon='sudo rfkill unblock all'
+
 # Show all live hosts on the local network (requires nmap and net-tools
 # installed)
 

@@ -122,7 +122,7 @@ alias spindown='sudo hdparm -y'
 
 # Fast-overwrite free disk space with zeroes using a temporary zero.000 file
 
-alias wipefreezero='sudo sh -c "dd if=/dev/zero of=zero.000 status=progress; sync; rm -f zero.000; sync"'
+alias wipefreefast='sudo sh -c "dd if=/dev/zero of=zero.000 status=progress; sync; rm -f zero.000; sync"'
 
 
 ### Processes ###

@@ -162,7 +162,7 @@ alias memfreeg='free -g | tail +2 | head -n 1 | tr -s " " | cut -d " " -f 3'
 
 # Show free RAM in percent
 
-alias memfreepc='FREE=$(free | sed -e "2q;d" | tr -s " "); printf "%.2f\n" $(( $(printf $FREE | cut -d " " -f 4).0 / $(printf $FREE | cut -d " " -f 2).0 * 100 ))'
+alias memfreepc='local freem=$(free | sed -e "2q;d" | tr -s " "); printf "%.2f\n" $(( $(printf $freem | cut -d " " -f 4).0 / $(printf $freem | cut -d " " -f 2).0 * 100 ))'
 
 # Clear the PageCache (filesystem cache) if eating too much memory. May turn
 # the computer partly unresponsive for some time.

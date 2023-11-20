@@ -232,8 +232,8 @@ alias kdemimefix='sudo sh -c "rm /usr/share/mime/packages/kde.xml && update-mime
 
 ### Media ###
 
-# Play a “ding” sound (requires pulseaudio-utils installed), with fallback to
-# the system beep
+# Play a “ding” sound (requires pulseaudio-utils and sound-theme-freedesktop
+# installed), with fallback to the system beep
 
 alias ding='paplay /usr/share/sounds/freedesktop/stereo/complete.oga || printf \\a'
 

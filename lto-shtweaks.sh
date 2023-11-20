@@ -235,7 +235,7 @@ alias kdemimefix='sudo sh -c "rm /usr/share/mime/packages/kde.xml && update-mime
 # Play a “ding” sound (requires pulseaudio-utils and sound-theme-freedesktop
 # installed), with fallback to the system beep
 
-alias ding='paplay /usr/share/sounds/freedesktop/stereo/complete.oga || printf \\a'
+alias ding='command -v paplay >/dev/null && paplay /usr/share/sounds/freedesktop/stereo/complete.oga || printf \\a'
 
 # Display a random picture from the internet as console ASCII art (requires
 # jp2a and ncurses-bin installed)

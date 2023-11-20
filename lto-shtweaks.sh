@@ -291,7 +291,7 @@ binaries () {
 # Wrapper for unpacking archive files
 
 ex () {
-  if [ -f $1 ] ; then
+  if [ -f "$1" ] ; then
     case $1 in
       *.tar)            tar xvf $1 ;;
       *.tar.gz|*.tgz)   tar xvzf $1 ;;

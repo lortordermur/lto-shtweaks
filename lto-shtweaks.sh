@@ -53,6 +53,8 @@
 
 alias sysinfo='sudo sh -c "inxi -F"'
 
+alias sysinfomax='sudo sh -c "inxi -FdfiJlmopruxt"'
+
 # Quick and dirty hardware summary where inxi or lshw are not available
 
 alias gethw='(printf "\nCPU\n\n"; lscpu; printf "\nMEMORY\n\n"; free -h; printf "\nDISKS\n\n"; lsblk; printf "\nPCI\n\n"; lspci; printf "\nUSB\n\n"; lsusb; printf "\nNETWORK\n\n"; ifconfig) | less'

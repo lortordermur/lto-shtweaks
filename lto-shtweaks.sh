@@ -205,6 +205,10 @@ alias webserver='php -S localhost:8000'
 
 alias pywebserver='python3 -m http.server 8000'
 
+# Public IP address and geolocation information in a column layout
+
+alias ipinfo='curl -s ipinfo.io | sed -e "s/\",//g" | tr -d "{\"}" | column'
+
 
 ### Shell ###
 

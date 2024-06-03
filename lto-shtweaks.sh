@@ -192,6 +192,16 @@ alias rfon='sudo rfkill unblock all'
 
 alias livehosts='nmap -sP "$(ip -4 -o route get 1 | cut -d " " -f 7)"/24 | grep report | cut -d " " -f 5-'
 
+# Scan for open ports on the local network (requires nmap and net-tools
+# installed)
+
+alias networkscan='nmap -sT "$(ip -4 -o route get 1 | cut -d " " -f 7)"/24'
+
+# Thorough port scan of a host or IP with service detection (requires nmap
+# installed)
+
+alias portscan='nmap -sT -A'
+
 # Show which processes are using the internet connection
 
 alias inetapps='lsof -P -i -n'

@@ -345,12 +345,14 @@ wipefree () {
 # Show the available I/O schedulers for the given device
 
 listioschedulers () {
+  [ -z "$1" ] && echo "Please specify a disk (e.g. sda)." && return
   cat /sys/block/$1/queue/scheduler | tr -d "[]" | tr -s " " "\n"
 }
 
 # Show the active I/O scheduler for the given device
 
 getioscheduler () {
+  [ -z "$1" ] && echo "Please specify a disk (e.g. sda)." && return
   cat /sys/block/$1/queue/scheduler | cut -f 2 -d "[" | cut -f 1 -d "]"
 }
 

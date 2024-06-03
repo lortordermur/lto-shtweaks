@@ -57,7 +57,7 @@ alias sysinfomax='sudo sh -c "inxi -FdfiJlmopruxt"'
 
 # Quick and dirty hardware summary where inxi or lshw are not available
 
-alias gethw='(printf "\nCPU\n\n"; lscpu; printf "\nMEMORY\n\n"; free -h; printf "\nDISKS\n\n"; lsblk; printf "\nPCI\n\n"; lspci; printf "\nUSB\n\n"; lsusb; printf "\nNETWORK\n\n"; ifconfig) | less'
+alias gethw='(printf "\nCPU\n---\n\n"; lscpu; printf "\nMEMORY\n------\n\n"; free -h; printf "\nSTORAGE\n-------\n\n"; lsblk; printf "\nPCI\n---\n\n"; lspci; printf "\nUSB\n---\n\n"; lsusb; printf "\nNETWORK\n-------\n\n"; ifconfig) | less'
 
 # Show a percental system load derived from the load average
 

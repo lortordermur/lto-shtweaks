@@ -105,6 +105,14 @@ alias mounts='mount | column -t | sort'
 
 alias disks='lsblk | grep "disk" | cut -f 1 -d " "'
 
+# Spin down an IDE drive (for example external USB drive)
+
+alias spindown='sudo hdparm -y'
+
+# Fast-overwrite free disk space with zeroes using a temporary zero.000 file
+
+alias wipefreefast='sudo sh -c "dd if=/dev/zero of=zero.000 status=progress; sync; rm -f zero.000; sync"'
+
 # Make the current user the owner of the given file(s) or directory, descends
 # recursively
 
@@ -118,13 +126,17 @@ alias greptree='grep --color -IsHr'
 
 alias dirdiff='diff -qr'
 
-# Spin down an IDE drive (for example external USB drive)
+# Sync-copy files or directories (creates or updates files at target)
 
-alias spindown='sudo hdparm -y'
+alias scopy='rsync -azhv --progress'
 
-# Fast-overwrite free disk space with zeroes using a temporary zero.000 file
+# Sync-copy files or directories over ssh
 
-alias wipefreefast='sudo sh -c "dd if=/dev/zero of=zero.000 status=progress; sync; rm -f zero.000; sync"'
+alias sshcopy='rsync -azhve ssh --progress'
+
+# Sync-move files or directories (deletes synced source files)
+
+alias smove='rsync -azhv --remove-source-files --progress'
 
 
 ### Processes ###

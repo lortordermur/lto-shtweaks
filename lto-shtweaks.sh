@@ -258,9 +258,17 @@ alias ding='command -v paplay >/dev/null && paplay /usr/share/sounds/freedesktop
 
 alias randompic='jp2a --colors --border https://picsum.photos/$(tput cols)/$(tput lines)'
 
-# List all PulseAudio sinks and sources
+# List all PulseAudio sinks and sources, minus monitors
 
-alias padevices='LANG=C pactl list | grep "Description: " | cut -d " " -f 2- | grep -v "$Monitor of"'
+alias palist='LANG=C pactl list sinks | grep "Description: " | cut -d " " -f 2- && LANG=C pactl list sources | grep "Description: " | cut -d " " -f 2- | grep -v "$Monitor of"'
+
+# List PulseAudio sinks
+
+alias pasinks='LANG=C pactl list sinks | grep "Description: " | cut -d " " -f 2-'
+
+# List PulseAudio sources, minus monitors
+
+alias pasources='LANG=C pactl list sources | grep "Description: " | cut -d " " -f 2- | grep -v "$Monitor of"'
 
 # Play some ambient pink noise with a band pass around human voice frequencies
 # (requires sox installed)

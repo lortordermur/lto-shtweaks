@@ -2,6 +2,8 @@
 
 This is a collection of handy shell aliases and functions in a sourceable file. For background, my own aliases file had grown to embarrassing dimensions over more than two decades and was largely unorganized and full of cruft. Therefore, as an evening project, I transferred what I felt could be shared with the world into a neatly structured file which is offered here for copy and paste or download.
 
+The file is occasionally updated as I add new aliases, so be sure to hit the watch button if you don't want to miss out.
+
 ### How to import the file into your shell initialization files
 
 Download or clone `lto-shtweaks.sh` to your computer and copy or symlink it to your home directory. At the bottom of `.bashrc`, `.zshrc` or whatever file your shell reads on interactive startup, add:

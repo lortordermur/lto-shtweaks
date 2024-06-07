@@ -252,6 +252,10 @@ alias kdemimefix='sudo sh -c "rm /usr/share/mime/packages/kde.xml && update-mime
 
 alias glinfo='info=$(glxinfo) && echo $info | grep "OpenGL vendor string: " | head -n 1 | cut -d " " -f 4- | tr -d "\n" && printf " "  && echo $info | grep "OpenGL renderer string: " | head -n 1 | cut -d " " -f 4- | tr -d "\n" && printf ", OpenGL " && echo $info | grep "OpenGL version string: " | head -n 1 | cut -d " " -f 4-'
 
+# Brief Vulkan information
+
+alias vkinfo='info=$(vulkaninfo) && printf "Vulkan version: " && echo $info | grep "Vulkan Instance Version: " | cut -d " " -f 4- | tr -d "\n" && printf ", GPUs: " && echo $info | grep "$GPU id : " | cut -d " " -f 5- | tr ":" "," | tr -d "\n" && echo'
+
 # List all PulseAudio sinks and sources, minus monitors
 
 alias palist='LANG=C pactl list sinks | grep "Description: " | cut -d " " -f 2- && LANG=C pactl list sources | grep "Description: " | cut -d " " -f 2- | grep -v "$Monitor of"'

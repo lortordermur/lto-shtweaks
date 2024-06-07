@@ -49,6 +49,11 @@
 
 ### General ###
 
+# List aliases and functions contained in this file, based on GitHub main
+# branch
+
+alias listshtweaks='tweaksfile=$(curl -s https://raw.githubusercontent.com/lortordermur/lto-shtweaks/main/lto-shtweaks.sh) && echo $tweaksfile | grep "^alias " | cut -d "=" -f 1 | grep -v "^#alias" && echo $tweaksfile | grep " () {$" | tr -d "{"'
+
 # System information summary (requires inxi installed)
 
 alias sysinfo='sudo sh -c "inxi -F"'

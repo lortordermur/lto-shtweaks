@@ -248,15 +248,9 @@ alias kdemimefix='sudo sh -c "rm /usr/share/mime/packages/kde.xml && update-mime
 
 ### Media ###
 
-# Play a “ding” sound (requires pulseaudio-utils and sound-theme-freedesktop
-# installed), with fallback to the system beep
+# Brief OpenGL information
 
-alias ding='command -v paplay >/dev/null && paplay /usr/share/sounds/freedesktop/stereo/complete.oga || printf \\a'
-
-# Display a random picture from the internet as console ASCII art (requires
-# jp2a and ncurses-bin installed)
-
-alias randompic='jp2a --colors --border https://picsum.photos/$(tput cols)/$(tput lines)'
+alias glinfo='info=$(glxinfo) && echo $info | grep "OpenGL vendor string: " | head -n 1 | cut -d " " -f 4- | tr -d "\n" && printf " "  && echo $info | grep "OpenGL renderer string: " | head -n 1 | cut -d " " -f 4- | tr -d "\n" && printf ", OpenGL " && echo $info | grep "OpenGL version string: " | head -n 1 | cut -d " " -f 4-'
 
 # List all PulseAudio sinks and sources, minus monitors
 
@@ -269,6 +263,16 @@ alias pasinks='LANG=C pactl list sinks | grep "Description: " | cut -d " " -f 2-
 # List PulseAudio sources, minus monitors
 
 alias pasources='LANG=C pactl list sources | grep "Description: " | cut -d " " -f 2- | grep -v "$Monitor of"'
+
+# Play a “ding” sound (requires pulseaudio-utils and sound-theme-freedesktop
+# installed), with fallback to the system beep
+
+alias ding='command -v paplay >/dev/null && paplay /usr/share/sounds/freedesktop/stereo/complete.oga || printf \\a'
+
+# Display a random picture from the internet as console ASCII art (requires
+# jp2a and ncurses-bin installed)
+
+alias randompic='jp2a --colors --border https://picsum.photos/$(tput cols)/$(tput lines)'
 
 # Play some ambient pink noise with a band pass around human voice frequencies
 # (requires sox installed)

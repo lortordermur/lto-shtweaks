@@ -271,23 +271,23 @@ alias kdemimefix='sudo sh -c "rm /usr/share/mime/packages/kde.xml && update-mime
 
 # Brief OpenGL information
 
-alias glinfo='info=$(glxinfo) && echo $info | grep "OpenGL vendor string: " | head -n 1 | cut -d " " -f 4- | tr -d "\n" && printf " "  && echo $info | grep "OpenGL renderer string: " | head -n 1 | cut -d " " -f 4- | tr -d "\n" && printf ", OpenGL " && echo $info | grep "OpenGL version string: " | head -n 1 | cut -d " " -f 4-'
+alias glinfo='info=$(glxinfo) && echo $info | grep "^OpenGL vendor string: " | head -n 1 | cut -d " " -f 4- | tr -d "\n" && printf " "  && echo $info | grep "^OpenGL renderer string: " | head -n 1 | cut -d " " -f 4- | tr -d "\n" && printf ", OpenGL " && echo $info | grep "^OpenGL version string: " | head -n 1 | cut -d " " -f 4-'
 
 # Brief Vulkan information
 
-alias vkinfo='info=$(vulkaninfo) && printf "Vulkan version: " && echo $info | grep "Vulkan Instance Version: " | cut -d " " -f 4- | tr -d "\n" && printf ", GPUs: " && echo $info | grep "$GPU id : " | cut -d " " -f 5- | tr ":" "," | tr -d "\n" && echo'
+alias vkinfo='info=$(vulkaninfo) && printf "Vulkan version: " && echo $info | grep "^Vulkan Instance Version: " | cut -d " " -f 4- | tr -d "\n" && printf ", GPUs: " && echo $info | grep "^GPU id : " | cut -d " " -f 5- | tr ":" "," | tr -d "\n" && echo'
 
 # List all PulseAudio sinks and sources, minus monitors
 
-alias palist='LANG=C pactl list sinks | grep "Description: " | cut -d " " -f 2- && LANG=C pactl list sources | grep "Description: " | cut -d " " -f 2- | grep -v "$Monitor of"'
+alias palist='LANG=C pactl list sinks | grep -P "\tDescription: " | cut -d " " -f 2- && LANG=C pactl list sources | grep -P "\tDescription: " | cut -d " " -f 2- | grep -v "Monitor of"'
 
 # List PulseAudio sinks
 
-alias pasinks='LANG=C pactl list sinks | grep "Description: " | cut -d " " -f 2-'
+alias pasinks='LANG=C pactl list sinks | grep -P "\tDescription: " | cut -d " " -f 2-'
 
 # List PulseAudio sources, minus monitors
 
-alias pasources='LANG=C pactl list sources | grep "Description: " | cut -d " " -f 2- | grep -v "$Monitor of"'
+alias pasources='LANG=C pactl list sources | grep -P "\tDescription: " | cut -d " " -f 2- | grep -v "Monitor of"'
 
 # Play a “ding” sound (requires pulseaudio-utils and sound-theme-freedesktop
 # installed), with fallback to the system beep

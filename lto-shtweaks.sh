@@ -67,6 +67,10 @@ alias sysload='printf "System load (1m/5m/15m): "; for l in 1 2 3 ; do printf "%
 
 alias bman='man --html=x-www-browser'
 
+# ASCII weather for your location
+
+alias weather='local info=$(curl -s ipinfo.io) && local city=$(echo $info | grep "\"city\": " | cut -d "\"" -f 4) && local country=$(echo $info | grep "\"country\": " | cut -d "\"" -f 4) && curl "wttr.in/$city,$country"'
+
 
 ### Package management ###
 
@@ -310,12 +314,6 @@ alias wipethumbs='rm -rf ~/.cache/thumbnails'
     ###############
 
 ### General ###
-
-# ASCII weather for your location
-
-weather () {
-  local info=$(curl -s ipinfo.io) && local city=$(echo $info | grep "\"city\": " | cut -d "\"" -f 4) && local country=$(echo $info | grep "\"country\": " | cut -d "\"" -f 4) && curl "wttr.in/$city,$country"
-}
 
 # Shell pocket calculator (pure sh; you might need to quote the input;
 # requires bc installed)

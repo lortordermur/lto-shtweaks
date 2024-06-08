@@ -64,6 +64,26 @@ alias sysinfomax='sudo sh -c "inxi -FdfiJlmopruxt"'
 
 alias gethw='(printf "\nCPU\n---\n\n"; lscpu; printf "\nMEMORY\n------\n\n"; free -h; printf "\nSTORAGE\n-------\n\n"; lsblk; printf "\nPCI\n---\n\n"; lspci; printf "\nUSB\n---\n\n"; lsusb; printf "\nNETWORK\n-------\n\n"; ifconfig) | less'
 
+# Show CPU model
+
+alias cpumodel='LANG=C lscpu | grep "^Model name: " | cut -d ":" -f 2 | tr -d " "'
+
+# Show CPU architecture
+
+alias cpuarch='LANG=C lscpu | grep "^Architecture: " | cut -d ":" -f 2 | tr -d " "'
+
+# Show number of CPU cores
+
+alias cpucores='nproc'
+
+# Show maximum CPU frequency
+
+alias cpumaxfreq='LANG=C lscpu | grep "^CPU max MHz: " | cut -d ":" -f 2 | tr -d " "'
+
+# Show BogoMIPS
+
+alias bogomips='LANG=C lscpu | grep "^BogoMIPS: " | cut -d ":" -f 2 | tr -d " "'
+
 # Show a percental system load derived from the load average
 
 alias sysload='printf "System load (1m/5m/15m): "; for l in 1 2 3 ; do printf "%.1f%s" "$(( $(cat /proc/loadavg | cut -f $l -d " ") * 100 / $(nproc) ))" "% "; done; printf "\n"'

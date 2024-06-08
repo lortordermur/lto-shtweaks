@@ -205,6 +205,10 @@ alias game='DRI_PRIME=1'
 
 alias javabg='renice -n 20 -p $(pidof -s java)'
 
+# Show the name of the currently running shell
+
+alias whatshell='ps -p $$ | tail -n 1 | grep -o "[^ ]*$"'
+
 
 ### Memory ###
 

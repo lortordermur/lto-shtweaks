@@ -52,7 +52,7 @@
 # List aliases and functions contained in this file. If the file is not found
 # in the home directory it is loaded from GitHub
 
-alias listshtweaks='filename="$(realpath ~)/lto-shtweaks.sh"; [ -r "$filename" ] && content=$(cat $filename); [ ! -r "$filename" ] && content=$(curl -s https://raw.githubusercontent.com/lortordermur/lto-shtweaks/main/lto-shtweaks.sh); echo $content | grep "^alias " | cut -d "=" -f 1 | grep -v "^#alias" && echo $content | grep " () {$" | tr -d "{"'
+alias listshtweaks='filename="$(realpath ~)/lto-shtweaks.sh"; [ -r "$filename" ] && content=$(cat $filename); [ ! -r "$filename" ] && content=$(curl -s https://raw.githubusercontent.com/lortordermur/lto-shtweaks/main/lto-shtweaks.sh); (echo $content | grep "^alias " | cut -d "=" -f 1 | grep -v "^#alias" && echo $content | grep " () {$" | tr -d "{")'
 
 # System information summary (requires inxi installed)
 

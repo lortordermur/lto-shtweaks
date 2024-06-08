@@ -96,6 +96,18 @@ alias bman='man --html=x-www-browser'
 
 alias weather='local info=$(curl -s ipinfo.io) && local city=$(echo $info | grep "\"city\": " | cut -d "\"" -f 4) && local country=$(echo $info | grep "\"country\": " | cut -d "\"" -f 4) && curl "wttr.in/$city,$country"'
 
+# Count number of characters in stdin
+
+alias charcount='wc -m'
+
+# Count number of words in stdin
+
+alias wordcount='wc -w'
+
+# Count number of lines in stdin
+
+alias linecount='wc -l'
+
 
 ### Package management ###
 
@@ -166,6 +178,11 @@ alias sshcopy='rsync -azhve ssh --progress'
 # Sync-move files or directories (deletes synced source files)
 
 alias smove='rsync -azhv --remove-source-files --progress'
+
+# Create a directory including parent directories
+
+alias mkpath='mkdir -p'
+
 
 
 ### Processes ###

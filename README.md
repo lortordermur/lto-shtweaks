@@ -20,6 +20,10 @@ or
 source ~/lto-shtweaks.sh
 ```
 
+### How to see the available aliases and functions ###
+
+Type `listshtweaks` after importing the file.
+
 ### How to remove unneeded aliases
 
 To undefine certain aliases sourced from `lto-shtweaks.sh` you can use the `unalias` command. Following the source statement, put

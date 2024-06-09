@@ -54,55 +54,13 @@
 
 alias listshtweaks='filename="$(realpath ~)/lto-shtweaks.sh"; [ -r "$filename" ] && content=$(cat $filename); [ ! -r "$filename" ] && content=$(curl -s https://raw.githubusercontent.com/lortordermur/lto-shtweaks/main/lto-shtweaks.sh); (echo $content | grep "^alias " | cut -d "=" -f 1 | grep -v "^#alias" && echo $content | grep " () {$" | tr -d "{")'
 
-# System information summary (requires inxi installed)
+# Show a percental system load derived from the load average
 
-alias sysinfo='sudo sh -c "inxi -F"'
-
-alias sysinfomax='sudo sh -c "inxi -FdfiJlmopruxt"'
-
-# Quick and dirty hardware summary where inxi or lshw are not available
-
-alias gethw='(printf "\nCPU\n---\n\n"; lscpu; printf "\nMEMORY\n------\n\n"; free -h; printf "\nSTORAGE\n-------\n\n"; lsblk; printf "\nPCI\n---\n\n"; lspci; printf "\nUSB\n---\n\n"; lsusb; printf "\nNETWORK\n-------\n\n"; ifconfig) | less'
-
-# Show CPU model
-
-alias cpumodel='LANG=C lscpu | grep "^Model name: " | cut -d ":" -f 2 | tr -d " "'
-
-# Show CPU architecture
-
-alias cpuarch='LANG=C lscpu | grep "^Architecture: " | cut -d ":" -f 2 | tr -d " "'
-
-# Show number of CPU cores
-
-alias cpucores='nproc'
-
-# Show maximum CPU frequency
-
-alias cpumaxfreq='LANG=C lscpu | grep "^CPU max MHz: " | cut -d ":" -f 2 | tr -d " "'
-
-# Show BogoMIPS
-
-alias bogomips='LANG=C lscpu | grep "^BogoMIPS: " | cut -d ":" -f 2 | tr -d " "'
-
-# CPU speed monitor
-
-alias cpumon='watch -tn1 "sudo dmidecode -t processor | grep \"Current Speed: \" | cut -d \":\" -f 2 | tr -d \" \s""'
-
-# System temperature monitor
-
-alias tempmon='watch -tn1 sensors'
-
-# Show battery charge percentage
-
-alias battery='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage | cut -d ":" -f 2 | tr -d " "'
+alias sysload='printf "System load (1m/5m/15m): "; for l in 1 2 3 ; do printf "%.1f%s" "$(( $(cat /proc/loadavg | cut -f $l -d " ") * 100 / $(nproc) ))" "% "; done; printf "\n"'
 
 # Suspend the computer
 
 alias standby='systemctl suspend'
-
-# Show a percental system load derived from the load average
-
-alias sysload='printf "System load (1m/5m/15m): "; for l in 1 2 3 ; do printf "%.1f%s" "$(( $(cat /proc/loadavg | cut -f $l -d " ") * 100 / $(nproc) ))" "% "; done; printf "\n"'
 
 # View a manpage in the default web browser (requires groff-base installed)
 
@@ -162,6 +120,51 @@ alias listmanpkgs='sudo apt-mark showmanual | sed "s/$/ \tinstall/"'
 # location(s) of an installed command (requires command-not-found installed)
 
 alias whatcontains='/usr/lib/command-not-found --no-failure-msg'
+
+
+### Hardware ###
+
+# System information summary (requires inxi installed)
+
+alias sysinfo='sudo sh -c "inxi -F"'
+
+alias sysinfomax='sudo sh -c "inxi -FdfiJlmopruxt"'
+
+# Quick and dirty hardware summary where inxi or lshw are not available
+
+alias gethw='(printf "\nCPU\n---\n\n"; lscpu; printf "\nMEMORY\n------\n\n"; free -h; printf "\nSTORAGE\n-------\n\n"; lsblk; printf "\nPCI\n---\n\n"; lspci; printf "\nUSB\n---\n\n"; lsusb; printf "\nNETWORK\n-------\n\n"; ifconfig) | less'
+
+# Show CPU model
+
+alias cpumodel='LANG=C lscpu | grep "^Model name: " | cut -d ":" -f 2 | tr -d " "'
+
+# Show CPU architecture
+
+alias cpuarch='LANG=C lscpu | grep "^Architecture: " | cut -d ":" -f 2 | tr -d " "'
+
+# Show number of CPU cores
+
+alias cpucores='nproc'
+
+# Show maximum CPU frequency
+
+alias cpumaxfreq='LANG=C lscpu | grep "^CPU max MHz: " | cut -d ":" -f 2 | tr -d " "'
+
+# Show BogoMIPS
+
+alias bogomips='LANG=C lscpu | grep "^BogoMIPS: " | cut -d ":" -f 2 | tr -d " "'
+
+# CPU speed monitor
+
+alias cpumon='watch -tn1 "sudo dmidecode -t processor | grep \"Current Speed: \" | cut -d \":\" -f 2 | tr -d \" \s""'
+
+# System temperature monitor
+
+alias tempmon='watch -tn1 sensors'
+
+# Show battery charge percentage
+
+alias battery='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage | cut -d ":" -f 2 | tr -d " "'
 
 
 ### Filesystem ###
@@ -240,10 +243,6 @@ alias game='DRI_PRIME=1'
 # Java daemons like BubbleUPnP Server or Freenet)
 
 alias javabg='renice -n 20 -p $(pidof -s java)'
-
-# Show the name of the currently running shell
-
-alias whatshell='ps -p $$ | tail -n 1 | grep -o "[^ ]*$"'
 
 
 ### Memory ###
@@ -327,6 +326,10 @@ alias ipinfo='curl -s ipinfo.io | sed -e "s/\",//g" | tr -d "{\"}" | column'
 
 
 ### Shell ###
+
+# Show the name of the currently running shell
+
+alias whatshell='ps -p $$ | tail -n 1 | grep -o "[^ ]*$"'
 
 # Wipe out the running shell’s history
 

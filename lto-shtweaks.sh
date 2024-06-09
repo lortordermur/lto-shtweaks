@@ -84,9 +84,21 @@ alias cpumaxfreq='LANG=C lscpu | grep "^CPU max MHz: " | cut -d ":" -f 2 | tr -d
 
 alias bogomips='LANG=C lscpu | grep "^BogoMIPS: " | cut -d ":" -f 2 | tr -d " "'
 
+# CPU speed monitor
+
+alias cpumon='watch -tn1 "sudo dmidecode -t processor | grep \"Current Speed: \" | cut -d \":\" -f 2 | tr -d \" \s""'
+
+# System temperature monitor
+
+alias tempmon='watch -tn1 sensors'
+
 # Show battery charge percentage
 
 alias battery='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage | cut -d ":" -f 2 | tr -d " "'
+
+# Suspend the computer
+
+alias standby='systemctl suspend'
 
 # Show a percental system load derived from the load average
 
@@ -100,6 +112,14 @@ alias bman='man --html=x-www-browser'
 
 alias weather='local info=$(curl -s ipinfo.io) && local city=$(echo $info | grep "\"city\": " | cut -d "\"" -f 4) && local country=$(echo $info | grep "\"country\": " | cut -d "\"" -f 4) && curl "wttr.in/$city,$country"'
 
+# Star Wars Episode IV over telnet
+
+alias starwars='telnet towel.blinkenlights.nl'
+
+# Play NetHack online
+
+alias nethack='telnet nethack.alt.org'
+
 # Count number of characters in stdin
 
 alias charcount='wc -m'
@@ -111,6 +131,10 @@ alias wordcount='wc -w'
 # Count number of lines in stdin
 
 alias linecount='wc -l'
+
+# Shows the current time without the date
+
+alias now='date +%T'
 
 
 ### Package management ###
@@ -186,6 +210,11 @@ alias sshcopy='rsync -azhve ssh --progress'
 # Sync-move files or directories (deletes synced source files)
 
 alias smove='rsync -azhv --remove-source-files --progress'
+
+# Synchronize destination with source, skip newer files, delete files as
+# required
+
+alias ssync="rsync -azhvu --delete --progress"
 
 # Create a directory including parent directories
 
@@ -270,6 +299,10 @@ alias networkscan='nmap -sT "$(ip -4 -o route get 1 | cut -d " " -f 7)"/24'
 # installed)
 
 alias portscan='nmap -sT -A'
+
+# Show which ports are in use
+
+alias ports='sudo netstat -tulpan | sort'
 
 # Show which processes are using the internet connection
 

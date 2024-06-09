@@ -166,7 +166,7 @@ alias bogomips='LANG=C lscpu | grep "^BogoMIPS: " | cut -d ":" -f 2 | tr -d " "'
 
 # CPU speed monitor
 
-alias cpumon='watch -tn1 "sudo dmidecode -t processor | grep \"Current Speed: \" | cut -d \":\" -f 2 | tr -d \" \s""'
+alias cpumon='watch -tn1 "sudo dmidecode -t processor | grep \"Current Speed: \" | cut -d \":\" -f 2 | tr -d \" \""'
 
 # System temperature monitor
 

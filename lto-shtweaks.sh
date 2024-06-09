@@ -84,6 +84,10 @@ alias cpumaxfreq='LANG=C lscpu | grep "^CPU max MHz: " | cut -d ":" -f 2 | tr -d
 
 alias bogomips='LANG=C lscpu | grep "^BogoMIPS: " | cut -d ":" -f 2 | tr -d " "'
 
+# Show battery charge percentage
+
+alias battery='upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage | cut -d ":" -f 2 | tr -d " "'
+
 # Show a percental system load derived from the load average
 
 alias sysload='printf "System load (1m/5m/15m): "; for l in 1 2 3 ; do printf "%.1f%s" "$(( $(cat /proc/loadavg | cut -f $l -d " ") * 100 / $(nproc) ))" "% "; done; printf "\n"'
@@ -154,6 +158,10 @@ alias spindown='sudo hdparm -y'
 
 alias wipefreefast='sudo sh -c "dd if=/dev/zero of=zero.000 status=progress; sync; rm -f zero.000; sync"'
 
+# Clear swap file(s)
+
+alias clearswap='sudo swapoff -a; sudo swapon -a'
+
 # Make the current user the owner of the given file(s) or directory, descends
 # recursively
 
@@ -182,7 +190,6 @@ alias smove='rsync -azhv --remove-source-files --progress'
 # Create a directory including parent directories
 
 alias mkpath='mkdir -p'
-
 
 
 ### Processes ###
@@ -276,6 +283,10 @@ alias webserver='php -S localhost:8000'
 # Alternative: instant Python web server in the current directory
 
 alias pywebserver='python3 -m http.server 8000'
+
+# Public IP address
+
+alias myip='curl ident.me'
 
 # Public IP address and geolocation information in a column layout
 

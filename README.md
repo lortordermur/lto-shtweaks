@@ -34,6 +34,12 @@ unalias alias-name…
 
 It is possible to provide several aliases as parameters. If on the other hand you just wish to redefine an alias sourced from `lto-shtweaks.sh`, use the `alias` command again with another value.
 
+To undefine a function, use
+
+```sh
+unset -f function-name…
+```
+
 ### Reporting dysfunctional commands
 
 If a command or function does not work for you, please create an issue on the [issue tracker](https://github.com/lortordermur/lto-shtweaks/issues) so we can work out a solution.

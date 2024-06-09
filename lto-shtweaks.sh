@@ -60,6 +60,10 @@ export SHTWEAKS_BRANCH="release"
 
 alias listshtweaks='filename="$(realpath ~)/lto-shtweaks.sh"; [ -r "$filename" ] && content=$(cat $filename); [ ! -r "$filename" ] && content=$(curl -s https://raw.githubusercontent.com/lortordermur/lto-shtweaks/main/lto-shtweaks.sh); (echo $content | grep "^alias " | cut -d "=" -f 1 | grep -v "^#alias" && echo $content | grep " () {$" | tr -d "{")'
 
+# Get version info of this file
+
+alias shtweaksver='set | grep SHTWEAKS'
+
 # Show a percental system load derived from the load average
 
 alias sysload='printf "System load (1m/5m/15m): "; for l in 1 2 3 ; do printf "%.1f%s" "$(( $(cat /proc/loadavg | cut -f $l -d " ") * 100 / $(nproc) ))" "% "; done; printf "\n"'

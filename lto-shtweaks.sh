@@ -28,6 +28,12 @@
 ### ENVIRONMENT ###
     ###########
 
+# Version and branch of lto-shtweaks
+
+export SHTWEAKS_VERSION="2"
+export SHTWEAKS_BRANCH="release"
+#export $SHTWEAKS_BRANCH="devel"
+
 # For shell programming. Uncomment this to make interactive shells and GNU
 # commands try to behave more POSIX conformant. Setting this may break some
 # shell scripts.

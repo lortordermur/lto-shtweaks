@@ -104,6 +104,10 @@ alias linecount='wc -l'
 
 alias now='date +%T'
 
+# Shows information about previous shutdowns and reboots
+
+alias shreb='last -x | grep -E "reboot|shutdown"'
+
 
 ### Package management ###
 

@@ -349,6 +349,10 @@ alias whatshell='ps -p $$ | tail -n 1 | grep -o "[^ ]*$"'
 
 alias wipehist='history -c; history -w'
 
+# Reset the terminal like 'reset' or 'tput reset' by sending ESC
+
+alias unbork='echo -e "\033c"'
+
 
 ### Desktop ###
 
